@@ -13,13 +13,25 @@ struct HomeView: View {
 
     var body: some View {
       VStack {
-        if locationManager.placemark?.locality != nil {
-          Text(locationManager.placemark!.locality!)
-        }else{
-          Text("Home View")
+        HStack{
+          Button(action: {}) {
+            Image(systemName: "text.alignleft").resizable().frame(width: 30, height: 30).foregroundColor(.white)
+          }.padding(.top, 30)
+          .padding(.leading, 10)
+          Spacer()
+
+          Text(locationManager.placemark?.locality != nil ? locationManager.placemark!.locality! : "")
+            .foregroundColor(.white)
+            .font(.title)
+            .bold()
+            .padding(.top,30)
+            .padding(.leading, -20)
+          Spacer()
         }
+
+        Spacer()
       }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-      .background(Color.white)
+      .background(LinearGradient(gradient: Gradient(colors: [.blue,.yellow]), startPoint: .top, endPoint: .bottom))
       .onAppear(perform: {
         if locationManager.isLocationEnabled {
           locationManager.requestAuthorization()
