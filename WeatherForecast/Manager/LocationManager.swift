@@ -28,8 +28,8 @@ class LocationManager: NSObject, ObservableObject {
     willSet { objectWillChange.send() }
   }
 
-  var isLocationEnabled:Bool {
-    return CLLocationManager.locationServicesEnabled()
+  @Published var isLocationAuthorised:Bool = false {
+    willSet { objectWillChange.send() }
   }
 
   override init() {
@@ -41,8 +41,7 @@ class LocationManager: NSObject, ObservableObject {
   }
 
   func requestAuthorization() {
-    self.locationManager.requestWhenInUseAuthorization()
-    self.locationManager.startUpdatingLocation()
+    self.locationManager.requestAlwaysAuthorization()
   }
 
   private func geocode() {
@@ -57,12 +56,28 @@ class LocationManager: NSObject, ObservableObject {
         }
       })
     }
+
+  private func updateAuthorizationStatus() {
+    switch status {
+    case .authorizedAlways,.authorizedWhenInUse:
+      isLocationAuthorised = true
+      break
+    case .denied,.notDetermined,.restricted:
+      isLocationAuthorised = false
+      break
+
+    default:
+      break
+    }
+  }
+
 }
 
 extension LocationManager:CLLocationManagerDelegate {
 
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
     self.status = status
+    updateAuthorizationStatus()
   }
 
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

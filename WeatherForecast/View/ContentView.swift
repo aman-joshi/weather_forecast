@@ -11,17 +11,14 @@ import CoreLocation
 
 struct ContentView: View {
 
-  @State var showPermissionView = false
+  @State var dismissSplashScreen = false
 
     var body: some View {
       VStack {
-        if showPermissionView {
-          if CLLocationManager.locationServicesEnabled() {
-            HomeView()
-          }else{
-            PermissionView()
-          }
-        }else{
+        if dismissSplashScreen {
+            WeatherView()
+        }
+        else{
           IconView()
         }
       }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -34,7 +31,7 @@ struct ContentView: View {
 
   func changeView() {
     Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (_) in
-      self.showPermissionView = true
+      self.dismissSplashScreen = true
     }
   }
   

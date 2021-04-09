@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct WeatherView: View {
 
   @ObservedObject private var locationManager = LocationManager()
 
@@ -32,16 +32,12 @@ struct HomeView: View {
         Spacer()
       }.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
       .background(LinearGradient(gradient: Gradient(colors: [.blue,.yellow]), startPoint: .top, endPoint: .bottom))
-      .onAppear(perform: {
-        if locationManager.isLocationEnabled {
-          locationManager.requestAuthorization()
-        }
-      })
+      
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        WeatherView()
     }
 }
