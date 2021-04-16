@@ -1,4 +1,4 @@
-# weather_forecast
+# Weather Forecast
 Weather Forecast app is built on Swift UI framework with MVVM architecture.
 You can check weather status of any place you want from this app just by typing the name of that place.
 
