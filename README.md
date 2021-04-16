@@ -7,4 +7,6 @@ If you are new in Swift UI, you can learn from this project how to use the view 
 
 Below are some screenshots of the app :
 
-
+![Simulator Screen Shot - iPhone SE (2nd generation) - 2021-04-16 at 15 29 06](https://user-images.githubusercontent.com/81283951/115009974-7c3eb980-9eca-11eb-91ac-4b3007153e98.png)
+![Simulator Screen Shot - iPhone SE (2nd generation) - 2021-04-16 at 15 29 20](https://user-images.githubusercontent.com/81283951/115009981-7ea11380-9eca-11eb-9b88-e8ec33cc395e.png)
+![Simulator Screen Shot - iPhone SE (2nd generation) - 2021-04-16 at 15 30 02](https://user-images.githubusercontent.com/81283951/115009989-82cd3100-9eca-11eb-837c-3f0793ec3570.png)
